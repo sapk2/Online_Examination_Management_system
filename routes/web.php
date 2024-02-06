@@ -87,7 +87,9 @@ Route::get('/results/{id}/delete', [ResultController::class, 'delete'])->name('r
 
 
 
-
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/manageusers', [UserController::class, 'index'])->name('manageusers.index');
+});
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
