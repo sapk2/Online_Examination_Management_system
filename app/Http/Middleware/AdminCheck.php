@@ -6,20 +6,19 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class AdminCheck
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        dd(auth()->user()->role);
-       if (auth()->check() && auth()->user()->role ===1) {
+        if ($request->user()->roles == 0) {
+
             return $next($request);
         }
-
-        return redirect()->route('login')->with('error', 'Unauthorized access.');
+        return redirect()->back()->withErrors('You are not authorized to access this page');
     }
 }

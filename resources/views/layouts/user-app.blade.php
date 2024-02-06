@@ -26,7 +26,7 @@
         <div class="w-56 bg-blue-950 min-h-screen">
             <img class="p-3 m-2" src="{{asset('/img/logo.png')}}" alt="">
             <hr class="color-white border-b-gray-400 border-b-2 mb-1">
-            <h1 class="text-white text-center font-bold text-2xl">Admin Panel</h1>
+            <h1 class="text-white text-center font-bold text-2xl">User Panel</h1>
             <hr class="color-white border-b-gray-400 border-b-2 mt-1 mb-8">
             <a href="{{route('dashboard')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-speedometer"> Dashboard</i></a>
             <a href="{{route('faculties.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-person-vcard-fill"> Faculty</i></a>
@@ -51,18 +51,7 @@
             @yield('content')
         </div>
     </div>
-    <!-- <script>
-        var submenu = document.getElementById('submenu');
-        submenu.style.display = 'none';
-        function showhide(){
-            if(submenu.style.display == 'none')
-            {
-                submenu.style.display = 'block';
-            }
-            else
-            submenu.style.display = 'none';
-        }
-    </script>-->
+
 </body>
 
 </html>

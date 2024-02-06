@@ -44,4 +44,10 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('totaluser', 'totalsubject', 'totalquestion', 'user', 'data'));
     }
+
+    public function userIndex()
+    {
+        $user = User::all();
+        return view('user.dashboard', compact('user'));
+    }
 }

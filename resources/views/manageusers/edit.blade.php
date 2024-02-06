@@ -52,9 +52,9 @@
 </script>
 <div>
 <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role:</label>
-        <input type="radio" name="roles" id="role" value="Admin" > admin
-        <input type="radio" name="roles" id="role" value="teacher" > teacher
-        <input type="radio" name="roles" id="role" value="student" > student
+        <input type="radio" name="roles" id="role" value="0"> Admin
+        <input type="radio" name="roles" id="role" value="1"> Teacher
+        <input type="radio" name="roles" id="role" value="2"> Student
     </div>    
     <div class="flex justify-center mt-6">
         <input class="bg-blue-600 text-white px-4 py-2 rounded mx-2" type="submit" value="update">
