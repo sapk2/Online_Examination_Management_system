@@ -1,27 +1,27 @@
 @extends('layouts.user-app')
 @section('content')
-    <div class="grid-layout drop-shadow-md bg-gray-100 p-3 min-h-min">
-        <h1 class="font-bold text-3xl px-2 py-2">Dashboard</h1>
-        <div class="container">
-            <div class="grid grid-cols-3 gap-10 mt-5">
-                <div class="px-2 py-4 flex justify-between bg-blue-600 text-white rounded-lg shadow">
-                    <p>Total Users</p>
-                    <p class="text-5xl font-bold">2</p>
-                </div>
+<div class="flex justify-evenly ... my-9">
+  <div>
+<a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
+<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Upcoming Exams</h5>
+<p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+</a>
+</div>
+  <div>
+<a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-                <div class="px-2 py-4 flex justify-between bg-red-600 text-white rounded-lg shadow">
-                    <p>Total Subject</p>
-                    <p class="text-5xl font-bold">3</p>
-                </div>
+<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ongoing Exams</h5>
+<p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+</a>
+</div>
+  <div>
+<a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
+<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Past Exams</h5>
+<p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+</a>
+</div>
+</div>
 
-                <div class="px-2 py-4 flex justify-between bg-green-600 text-white rounded-lg shadow">
-                    <p>Total Questions</p>
-                    <p class="text-5xl font-bold">5</p>
-                </div>
-
-               
-            </div>
-        </div>
     @endsection

@@ -6,13 +6,13 @@ use App\Models\Questions;
 use App\Models\subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $totaluser = User::all()->count();
-        $user = User::all();
         $totalsubject = subject::all()->count();
         $totalquestion = Questions::all()->count();
         $questions = Questions::orderBy('id', 'ASC')->get();
@@ -42,12 +42,13 @@ class DashboardController extends Controller
             'data' => array_values($data), // Get values from associative array
         ];
 
-        return view('dashboard', compact('totaluser', 'totalsubject', 'totalquestion', 'user', 'data'));
+        return view('dashboard', compact('totaluser', 'totalsubject', 'totalquestion', 'data'));
     }
 
     public function userIndex()
     {
         $user = User::all();
-        return view('user.dashboard', compact('user'));
+        $addednumber = Auth()->user()->mobileno;
+        return view('user.dashboard', compact('user','addednumber'));
     }
 }

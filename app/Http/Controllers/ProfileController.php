@@ -16,10 +16,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $addednumber = Auth()->user()->mobileno;
+        $user = $request->user();
+        return view('profile.edit', compact('addednumber', 'user'));
     }
+   
 
     /**
      * Update the user's profile information.
@@ -36,6 +37,7 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+   
 
     /**
      * Delete the user's account.

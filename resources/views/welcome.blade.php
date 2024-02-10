@@ -22,8 +22,8 @@
                 <div class="flex lg:flex-1">
                     <a href="#" class="-m-2.5 p-2.5">
                         <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto" src="{{asset('/img/logo.png')}}" width="800" height="600"  alt="">
-                    </a> 
+                        <img class="h-8 w-auto" src="{{asset('/img/logo.png')}}" width="800" height="600" alt="">
+                    </a>
                 </div>
                 <div class="flex lg:hidden">
                     <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -41,12 +41,12 @@
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                     @auth
-                <a href="{{route('dashboard')}}" class="text-sm font-semibold leading-6 text-gray-300">Dashboard <span aria-hidden="true">&rarr;</span></a>
-                @else
-                <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-300">Log in <span aria-hidden="true">&rarr;</span></a>
-                @endelse
-                @endauth    
-            </div>
+                    <a href="{{route('dashboard')}}" class="text-sm font-semibold leading-6 text-gray-300">Dashboard <span aria-hidden="true">&rarr;</span></a>
+                    @else
+                    <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-300">Log in <span aria-hidden="true">&rarr;</span></a>
+                    @endelse
+                    @endauth
+                </div>
             </nav>
             <!-- Mobile menu, show/hide based on menu open state. -->
             <div class="lg:hidden" role="dialog" aria-modal="true">
@@ -153,11 +153,11 @@
                     <header class=" text-center leading-tight p-2 md:p-4">
                         <h1 class="text-lg">
                             <a class="no-underline hover:underline text-black text-xl" href="#">
-                                Student Management
+                                Easy Result Generation
                             </a>
                         </h1>
                         <p class="text-grey-darker text-sm">
-                            You can easiy manage all the students and check their progress.
+                            You can easily generate the result with few clicks.
                         </p>
                     </header>
 

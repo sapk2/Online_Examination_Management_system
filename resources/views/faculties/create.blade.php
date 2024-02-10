@@ -2,8 +2,8 @@
 @section('content')
 
 
-<h1 class="text 3xl font-bold  bg-green-200 px-2">Create Faculty</h1>
-<hr class="h-1 bg-green-600">
+<h1 class="text-3xl font-bold px-4 py-2">Create Faculty</h1>
+<div class="grid-layout drop-shadow-md px-4 min-h-min">
 
 
 <!-- Display validation errors if any -->
@@ -77,6 +77,6 @@
         <a href="{{route('faculties.index')}}" class="bg-red-600 text-white px-9 py-1 rounded block">cancel</a>
     </div>
 </form>
-
+</div>
 
 @endsection

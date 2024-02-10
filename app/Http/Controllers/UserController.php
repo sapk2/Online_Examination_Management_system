@@ -31,6 +31,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
+            
             'name' => 'required|string|max:255',
             'username' => 'required',
             'mobileno' => 'required|number',
@@ -38,6 +39,9 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8',
             'roles' => 'required|integer',
         ]);
+        
+           
+           
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -52,6 +56,7 @@ class UserController extends Controller
 
         return redirect()->route('manageusers.index')->with('success', 'User updated successfully');
     }
+   
 
     public function delete(User $user)
     {

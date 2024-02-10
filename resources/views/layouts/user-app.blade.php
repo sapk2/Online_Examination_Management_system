@@ -22,36 +22,73 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="flex">
-        <div class="w-56 bg-blue-950 min-h-screen">
-            <img class="p-3 m-2" src="{{asset('/img/logo.png')}}" alt="">
-            <hr class="color-white border-b-gray-400 border-b-2 mb-1">
-            <h1 class="text-white text-center font-bold text-2xl">User Panel</h1>
-            <hr class="color-white border-b-gray-400 border-b-2 mt-1 mb-8">
-            <a href="{{route('dashboard')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-speedometer"> Dashboard</i></a>
-            <a href="{{route('faculties.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-person-vcard-fill"> Faculty</i></a>
-            <a href="{{route('subject.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-book"> Subject</i></a>
-            <a href="{{route('questions.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2 relative"><i class="bi bi-question-circle"></i> Questions</i></a>
-            <a href="{{route('examnotices.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2 relative"><i class="bi bi-bell-fill"></i> Notice</i></a>
-            <a href="{{route('exams.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-explicit"></i> Exams</a>
-            <a href="{{route('results.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-r-square"></i> Results</a>
-            <a href="{{route('manageusers.index')}}" class="px-4 py-2 text-white hover:bg-blue-900 block border-l-white border-l-4 ml-2 mt-2"><i class="bi bi-person-gear"></i> Manage user</a>
-
-            <form action="{{route('logout')}}" method="POST" class="px-4 py-2 text-white hover:bg-red-600 hover:text-white block border-l-red-800 border-l-4 ml-2 mt-2   ">
+ 
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="{{asset('/img/logo.png')}}" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+    </a>
+   <div class="flex items-center justify-center">
+      <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <span class="sr-only">Open user menu</span>
+        <img class="w-8 h-8 rounded-full" src="{{ asset('/img/profile.jpg') }}" alt="user photo">
+      </button>
+      <!-- Dropdown menu -->
+     <div class="z-50 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute" id="user-dropdown" style="top: calc(9% + 0px); right: 0;">
+        <div class="px-4 py-3">
+         <a href="">  <span class="pr-2 pl-1">  {{Auth::user()->name}}🎉 </span></a>
+        </div>
+        <ul class="py-2" aria-labelledby="user-menu-button">
+            <li>
+              <a href="{{route('profile.edit')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">my profile</a>
+           </li>
+            <li>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+            </li>
+            <li>
+            <form action="{{route('logout')}}" method="POST" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-red-600 dark:text-gray-200 dark:hover:text-white  ">
                 @csrf
                 <button type="submit" class="w-full text-left"><i class="bi bi-box-arrow-right"></i> Logout</button>
             </form>
-
-
-        </div>
-        <div class="flex-1">
-                <div class="top-0 p-3 bg-blue-900 w-full text-white right-full inset-y-0 right-0 justify-end inline-flex">
-                Hello, <a href="{{route('profile.edit')}}"> <span class="pr-2 pl-1"> {{Auth::user()->name}} </span></a>
-                </div>
-            @yield('content')
-        </div>
+            </li>
+        </ul>
     </div>
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuButton = document.getElementById('user-menu-button');
+        const userDropdown = document.getElementById('user-dropdown');
+
+        // Toggle dropdown visibility when the button is clicked
+        menuButton.addEventListener('click', function () {
+            const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+            menuButton.setAttribute('aria-expanded', !expanded);
+            userDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when user clicks outside of it
+        document.addEventListener('click', function (event) {
+            if (!menuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+                menuButton.setAttribute('aria-expanded', 'false');
+                userDropdown.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+      
+  </div>
+  </div>
+</nav>
+
+           
+      
+@yield('content')
 </body>
 
 </html>
