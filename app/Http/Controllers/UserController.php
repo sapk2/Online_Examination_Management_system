@@ -38,7 +38,17 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'nullable|string|min:8',
             'roles' => 'required|integer',
+            'photopath'=>'required|image',
         ]);
+        if ($request->hasFile('photopath')) {
+            $file = $request->file('photopath');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/img/', $filename);
+            $data['photopath'] = $filename;
+          
+           
+        }
         
            
            

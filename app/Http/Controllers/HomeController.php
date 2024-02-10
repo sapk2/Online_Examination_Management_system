@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
+
 {
     public function index()
     {
@@ -16,11 +17,11 @@ class HomeController extends Controller
             $user = Auth()->user()->roles;
 
             return view('welcome', compact('user'));
-        } else {
-            return view('welcome');
+
+            # code...
         }
     }
-    
 
-    
+   
+
 }

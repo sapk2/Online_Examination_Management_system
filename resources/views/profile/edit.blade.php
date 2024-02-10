@@ -6,9 +6,9 @@
     <form action="{{route('profile.update')}}" class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4" method="post" enctype="multipart/form-data">
         @csrf
         @method('post')
-        <div class="card-body">
+        
         <input type="file" name="photopath" class="block w-full my-4 p-2 rounded">
-
+                       <button type="submit" class="btn btn-info" style="background-color:blue;">upload</button>
         <div class="mb-3">
             
             <label for="code" class="form-label">Full Name *</label>
@@ -30,7 +30,7 @@
             <input class="bg-blue-600 text-white px-4 py-2 rounded mx-2 hover:cursor-pointer" type="submit" value="update">
             <a href="profile.index" class="bg-red-500 text-white px-4 py-2 rounded mx-2">cancel</a>
         </div>
-        </div>
+        
     </form>
 </div>
 @endsection

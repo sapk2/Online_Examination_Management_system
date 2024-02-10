@@ -26,7 +26,9 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="{{asset('/img/logo.png')}}" class="h-8" alt="Flowbite Logo" />
+    @if(Auth::user()->image)
+<img class="image rounded-circle" src="{{asset('/public/img/'.Auth::user()->photopath)}}" alt="profile_image" style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+@endif
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
     </a>
    <div class="flex items-center justify-center">
@@ -37,7 +39,7 @@
       <!-- Dropdown menu -->
      <div class="z-50 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute" id="user-dropdown" style="top: calc(9% + 0px); right: 0;">
         <div class="px-4 py-3">
-         <a href="">  <span class="pr-2 pl-1">  {{Auth::user()->name}}🎉 </span></a>
+         <a href="">  <span class="pr-2 pl-1">  {{Auth::user()->username}}🎉 </span></a>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
