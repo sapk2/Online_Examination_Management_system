@@ -98,7 +98,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::group(['middleware' => ['auth', 'user']], function () {
     Route::prefix('user')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'userIndex'])->name('dashboard');
-       
+
 
         // Profile
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

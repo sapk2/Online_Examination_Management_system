@@ -65,4 +65,9 @@ class ExamController extends Controller
 
         return redirect()->route('exams.index')->with('success', 'Exam deleted successfully');
     }
+    public function loaddashboard()
+    {
+       $exams= Exam::with('subject')->orderby('created_at')->get();
+        return view('',compact('users'));
+    }
 }

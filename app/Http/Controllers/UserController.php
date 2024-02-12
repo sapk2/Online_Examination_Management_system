@@ -38,17 +38,19 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'nullable|string|min:8',
             'roles' => 'required|integer',
-            'photopath'=>'required|image',
+            'image'=>'required|image',
         ]);
-        if ($request->hasFile('photopath')) {
-            $file = $request->file('photopath');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $file->move('public/img/', $filename);
-            $data['photopath'] = $filename;
-          
-           
-        }
+        $request->validate([
+            'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $user=User::where('id',$user)->first();
+        unlink(' $user->image');
+        $image_name=time().'-'.$request->img->extension();
+        $request->image->move(public_path('img'),$image_name);
+        $path="/img".$image_name;
+    
+        $user->name = $request->name;
+        $user->image=$path;
         
            
            

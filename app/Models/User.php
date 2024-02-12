@@ -25,7 +25,8 @@ class User extends Authenticatable
         'roles',
         'username',
         'mobileno',
-        'photopath'
+        'image'
+      
     ];
 
     /**
