@@ -25,28 +25,28 @@
  
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-    
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-    </a>
+    <a href="/user/dashboard" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <img src="/img/logo.png" class="h-8" alt="Flowbite Logo" />
+   </a>
+
    <div class="flex items-center justify-center">
       <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span class="sr-only">Open user menu</span>
         @if(Auth::user()->image)
-<img class="image rounded-circle" src="{{asset('/storage/img/'.Auth::user()->image)}}" alt="profile_image" style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+<img class="image rounded-circle" src="{{asset(Auth::user()->image)}}" alt="profile_image" style="width: 50px;height: 50px; padding: 10px; margin: 0px; ">
 @endif
       </button>
       <!-- Dropdown menu -->
      <div class="z-50 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute" id="user-dropdown" style="top: calc(9% + 0px); right: 0;">
         <div class="px-4 py-3">
-         <a href="">  <span class="pr-2 pl-1">  {{Auth::user()->username}}🎉 </span></a>
+         <a href="/profile.index">  <span class="pr-2 pl-1">  {{Auth::user()->username}}🎉 </span></a>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
             <li>
-              <a href="{{route('profile.edit')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">my profile</a>
+              <a href="{{route('profile.index')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">my profile</a>
            </li>
             <li>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Exam</a>
+              <a href="{{route('exams.ongoingexam')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Exam</a>
             </li>
             <li>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"></a>

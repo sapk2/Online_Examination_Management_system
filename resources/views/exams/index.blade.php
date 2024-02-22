@@ -17,6 +17,8 @@
                 <th>Exam Title</th>
                 <th>Exam code</th>
                 <th>Duration</th>
+                <th>Start At</th>
+                <th>End At</th>
                 <th>Questions</th>
                 <th>Types</th>
                 <th> Marks</th>
@@ -30,6 +32,8 @@
             <td>{{$exam->exam_title}}</td>
             <td>{{ $exam->exam_code}}</td>
             <td>{{ $exam->duration}}</td>
+            <td>{{ $exam->start_at }}</td>
+             <td>{{ $exam->end_at }}</td>
             <td>{{ $exam->numberof_question }}</td>
             <td>{{ $exam->questiontype }}</td>
             <td>{{ $exam->fullmark }}</td>

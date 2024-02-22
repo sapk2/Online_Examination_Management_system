@@ -26,7 +26,7 @@
        <input type="file" name="image" class="block w-full my-4 p-2 rounded">
        <div class="flex justify-center mt-6">
            <input class="bg-blue-600 text-white px-4 py-2 rounded mx-2 hover:cursor-pointer" type="submit" value="update">
-           <a href="profile.index" class="bg-red-500 text-white px-4 py-2 rounded mx-2">cancel</a>
+           <a href="{{ route('profile.index') }}" class="bg-red-500 text-white px-4 py-2 rounded mx-2">cancel</a>
        </div>
 
         </form>

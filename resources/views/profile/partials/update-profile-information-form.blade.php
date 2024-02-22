@@ -46,6 +46,16 @@
                 </div>
             @endif
         </div>
+        <div>
+            <x-input-label for="mobile" :value="__('mobileno')" />
+            <x-text-input id="mobile" name="mobileno" type="tel" class="mt-1 block w-full" :value="old('mobile', $user->mobile)" required autocomplete="tel" />
+            <x-input-error class="mt-2" :messages="$errors->get('mobileno')" />
+        </div>
+        <div>
+            <x-input-label for="profile_picture" :value="__('image')" />
+            <input type="file" name="image" id="image" class="mt-1 block w-full">
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

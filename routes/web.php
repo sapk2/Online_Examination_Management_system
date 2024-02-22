@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::get('/exam/{id}/edit', [ExamController::class, 'edit'])->name('exams.edit');
         Route::post('/exam/{id}/update', [ExamController::class, 'update'])->name('exams.update');
         Route::get('/exam/{id}/delete', [ExamController::class, 'delete'])->name('exams.delete');
+        Route::get('/exam/{exam}', 'ExamController@take')->name('user.exam.take');
 
 
         /*examination Notice */
@@ -99,11 +100,16 @@ Route::group(['middleware' => ['auth', 'user']], function () {
     Route::prefix('user')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'userIndex'])->name('dashboard');
 
+        Route::get('/exam/{exam}', [ExamController::class, 'take'])->name('user.examtake');
+        Route::get('/exams/upcomingexam', [ExamController::class, 'upcomingexam'])->name('exams.upcomingexam'); 
+        Route::get('/exams/ongoingexam', [ExamController::class, 'ongoingexam'])->name('exams.ongoingexam');
+      
 
         // Profile
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
        
     });
 });

@@ -15,10 +15,7 @@ class HomeController extends Controller
     {
         if (Auth()->user() != null) {
             $user = Auth()->user()->roles;
-
             return view('welcome', compact('user'));
-
-            # code...
         }
     }
 }

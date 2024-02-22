@@ -15,6 +15,14 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    public function index()
+    {
+        // Retrieve the currently authenticated user's profile information
+        $user = auth()->user();
+
+        // Return the profile view with the user data
+        return view('profile.index', compact('user'));
+    }
     public function edit(Request $request): View
     {
         $addednumber = Auth()->user()->mobileno;
@@ -37,10 +45,10 @@ class ProfileController extends Controller
        if($request->hasFile('image'))
        {
         $user=User::where('id',$request->user()->id)->first();
-        //unlink(' $user->img');
+        //unlink('$user->img');
         $image_name=time().'-'.$request->image->extension();
         $request->image->move(public_path('img'),$image_name);
-        $path="/img".$image_name;
+        $path="/img/".$image_name;
     
         $user->name = $request->name;
         $user->image=$path;
@@ -51,7 +59,7 @@ class ProfileController extends Controller
       
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.index')->with('status', 'profile-updated');
     
     }
 

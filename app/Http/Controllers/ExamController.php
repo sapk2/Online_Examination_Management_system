@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 
 use App\Models\Exam;
 use App\Models\subject;
@@ -22,6 +23,8 @@ class ExamController extends Controller
             'exam_title' => 'required',
             'exam_code' => 'required',
             'duration' => 'required',
+            'start_at'=>'required',
+            'end_at'=>'required',
             'numberof_question' => 'required|integer',
             'questiontype'=>'required',
             'fullmark' => 'required|numeric',
@@ -46,6 +49,8 @@ class ExamController extends Controller
             'exam_title' => 'required',
             'exam_code' => 'required',
             'duration' => 'required', 
+            'start_at'=>'required',
+            'end_at'=>'required',
             'numberof_question' => 'required|integer',
             'questiontype'=>'required|enum',
             'fullmark' => 'required|numeric',
@@ -65,9 +70,52 @@ class ExamController extends Controller
 
         return redirect()->route('exams.index')->with('success', 'Exam deleted successfully');
     }
-    public function loaddashboard()
+    public function upcomingexam()
     {
-       $exams= Exam::with('subject')->orderby('created_at')->get();
-        return view('',compact('users'));
+        // Fetch upcoming exams from the database
+        $exams = Exam::where('start_at', '>', now())->get();
+
+        // Pass the upcoming exams data to the view
+        return view('user.exams.upcomingexam', compact('exams'));
     }
+    public function ongoingexam()
+    {
+        // Fetch ongoing exams from the database
+        $exams = Exam::where('start_at', '<=', now())
+                      ->where('end_at', '>=', now())
+                      ->get();
+    
+        // Pass the ongoing exams data to the view
+        return view('user.exams.ongoingexam', compact('exams'));
+    }
+    public function take(Exam $exam)
+    {
+        // Retrieve the subject related to the exam
+        $subject = $exam->subject;
+
+        // Retrieve questions related to the exam
+        $questions = $exam->questions;
+
+        // Pass the exam, subject, and questions data to a view
+        return view('exams.take', compact('exam', 'subject', 'questions'));
+    }
+    public function submit(Request $request, Exam $exam)
+{
+    // Validate the form submission
+    $validatedData = $request->validate([
+        // Add validation rules for submitted answers if needed
+    ]);
+
+    // Process the submitted answers and save them to the database
+   
+    foreach ($validatedData['answer'] as $questionId => $answer) {
+        // Logic to save each answer to the database
+    }
+
+    // Redirect the user or return a response
+    
+    return redirect()->route('exam.result', $exam->id)->with('success', 'Exam submitted successfully!');
+}
+
+   
 }

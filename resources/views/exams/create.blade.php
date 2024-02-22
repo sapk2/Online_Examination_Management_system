@@ -27,6 +27,14 @@
                 <input type="int" class="form-control" id="duration" name="duration" required>
             </div>
             <div class="mb-3">
+                <label for="start_at" class="form-label">Start At</label>
+                <input type="datetime-local" class="form-control" id="start_at" name="start_at" required>
+            </div>
+            <div class="mb-3">
+                <label for="end_at" class="form-label">End At</label>
+                <input type="datetime-local" class="form-control" id="end_at" name="end_at" required>
+            </div>
+            <div class="mb-3">
                 <label for="numberof_question" class="form-label"> Total Questions</label>
                 <input type="number" class="form-control" id="numberof_question" name="numberof_question" required>
             </div>
@@ -34,7 +42,6 @@
             <label for="questiontype" class="form-label">Question Type</label><br>
             <select class="form-control" id="questiontype" name="questiontype" required>
                 <option value="multiple choice">Multiple Choice</option>
-                <option value="truefalse">True/False</option>
                 <option value="short answer">Short Answer</option>
             </select>
         </div>

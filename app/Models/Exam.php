@@ -12,6 +12,8 @@ class Exam extends Model
         'exam_title',
         'exam_code',
         'duration',
+        'start_at',
+        'end_at',
         'numberof_question',
         'questiontype',
         'fullmark',
