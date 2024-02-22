@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-
+//use App\Http\Controllers\UserAnswer;
 use App\Models\Exam;
 use App\Models\subject;
 use Illuminate\Http\Request;
@@ -87,6 +87,25 @@ class ExamController extends Controller
     
         // Pass the ongoing exams data to the view
         return view('user.exams.ongoingexam', compact('exams'));
+    }
+    public function pastexam()
+    {
+        // Retrieve all past exams
+        $pastExams = Exam::where('end_at', '<', now())->get();
+
+        // Prepare an array to store user answers for each past exam
+       $userAnswer=[];
+       foreach ($pastExams as $pastExam) {
+        // Assuming user answers are stored as attributes of the Exam model
+        $userAnswers[$pastExam->id] = [
+            'question1' => $pastExam->user_answer_question1,
+            'question2' => $pastExam->user_answer_question2,
+          
+        ];
+    }
+
+    // Pass data to the view
+    return view('user.exams.pastexam', compact('pastExams'));
     }
     public function take(Exam $exam)
     {

@@ -21,7 +21,7 @@
        </div>
        <div class="mb-3">
            <label for="mobileno" class="form-label">Mobile Number</label>
-           <input type="number" class="form-control w-full" id="mobileno" name="mobileno" value="{{$user->mobileno}}">
+           <input type="tel" class="form-control w-full" id="mobileno" name="mobileno" value="{{$user->mobileno}}">
        </div>
        <input type="file" name="image" class="block w-full my-4 p-2 rounded">
        <div class="flex justify-center mt-6">
