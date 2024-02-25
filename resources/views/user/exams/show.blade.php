@@ -22,7 +22,7 @@
                 @foreach($exam->questions as $question)
                     <tr>
                         <td>{{ $question->text }}</td>
-                        <td>{{ $question->user_answer }}</td>
+                        <td>{{ $question->userAnswer->selected_option ?? 'Not answered' }}</td>
                         <td>{{ $question->correct_answer }}</td>
                     </tr>
                 @endforeach
