@@ -17,5 +17,8 @@ class HomeController extends Controller
             $user = Auth()->user()->roles;
             return view('welcome', compact('user'));
         }
+        else {
+            return redirect()->route('login'); // Redirect to the login page if the user is not authenticated
+        }
     }
 }

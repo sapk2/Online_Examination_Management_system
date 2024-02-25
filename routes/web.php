@@ -104,7 +104,7 @@ Route::group(['middleware' => ['auth', 'user']], function () {
         Route::get('/exams/upcomingexam', [ExamController::class, 'upcomingexam'])->name('exams.upcomingexam'); 
         Route::get('/exams/ongoingexam', [ExamController::class, 'ongoingexam'])->name('exams.ongoingexam');
         Route::get('/exams/pastexam', [ExamController::class, 'pastexam'])->name('exams.pastexam');
-
+        Route::get('/exams/{id}', [ExamController::class, 'show'])->name('exams.show');
         // Profile
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

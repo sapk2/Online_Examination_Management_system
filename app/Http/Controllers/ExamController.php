@@ -92,9 +92,6 @@ class ExamController extends Controller
     {
         // Retrieve all past exams
         $pastExams = Exam::where('end_at', '<', now())->get();
-
-        // Prepare an array to store user answers for each past exam
-       $userAnswer=[];
        foreach ($pastExams as $pastExam) {
         // Assuming user answers are stored as attributes of the Exam model
         $userAnswers[$pastExam->id] = [
@@ -107,6 +104,7 @@ class ExamController extends Controller
     // Pass data to the view
     return view('user.exams.pastexam', compact('pastExams'));
     }
+
     public function take(Exam $exam)
     {
         // Retrieve the subject related to the exam
@@ -116,25 +114,16 @@ class ExamController extends Controller
         $questions = $exam->questions;
 
         // Pass the exam, subject, and questions data to a view
-        return view('exams.take', compact('exam', 'subject', 'questions'));
-    }
-    public function submit(Request $request, Exam $exam)
-{
-    // Validate the form submission
-    $validatedData = $request->validate([
-        // Add validation rules for submitted answers if needed
-    ]);
-
-    // Process the submitted answers and save them to the database
-   
-    foreach ($validatedData['answer'] as $questionId => $answer) {
-        // Logic to save each answer to the database
+        return view('user.exams.take', compact('exam', 'subject', 'questions'));
     }
 
-    // Redirect the user or return a response
-    
-    return redirect()->route('exam.result', $exam->id)->with('success', 'Exam submitted successfully!');
-}
 
+ public function show($id)
+    {
+        $exam = Exam::findOrFail($id);
+        $subject = $exam->subject; 
+
+        return view('user.exams.show', compact('exam', 'subject'));
+    }
    
 }
