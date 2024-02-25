@@ -1,8 +1,6 @@
 @extends('layouts.user-app')
 
 @section('content')
-<!-- component -->
-<!-- This is an example component -->
 
 <div class="h-full">
  
@@ -44,7 +42,7 @@
     </div>
 
   </div>
- 
+  
 </div>
 
 

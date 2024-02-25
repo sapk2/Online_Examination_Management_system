@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -84,4 +85,37 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function show(){
+        $user= Auth::user();
+        $rank=$this->calculateRank($user);
+        $examProgress=$this->getUserExamProgress($user);
+        return view('profile',compact('user','rank','examProgress'));
+    }
+    // Calculate user's rank based on exam scores
+    private function calculateRank($user)
+    {
+        $score = $user->examScores->sum('score');
+        $rank = Exam::where('completed', true)
+            ->where('score', '>', $score)
+            ->count() + 1; // Add 1 to start from rank 1
+        return $rank;
+    }
+    // Retrieve user's progress in each exam attempt
+private function getUserExamProgress($user)
+{
+    // Retrieve all completed exams for the user
+    $completedExams = $user->exams()->where('completed', true)->get();
+
+    $examProgress = [];
+    foreach ($completedExams as $exam) {
+        $examProgress[] = [
+            'exam_title' => $exam->exam_title,
+            'score' => $exam->score,
+            // Add any other relevant data about the exam
+        ];
+    }
+
+    return $examProgress;
+}
+
 }

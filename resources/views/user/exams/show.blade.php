@@ -29,4 +29,9 @@
             </tbody>
         </table>
     </div>
+     <!-- Display marks for each attempt -->
+           
+                @foreach($attempts as $attempt)
+                    <li>Score: {{ $attempt->score }}</li>
+                @endforeach
 @endsection

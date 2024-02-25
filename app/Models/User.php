@@ -48,5 +48,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    // Define the relationship with the Exam model
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
+    // Define the relationship with the Subject model through the exams
+    public function subjects()
+    {
+        return $this->hasManyThrough(Subject::class, Exam::class);
+    }
+    
    
+
 }

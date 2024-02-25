@@ -51,4 +51,7 @@ class DashboardController extends Controller
         $addednumber = Auth()->user()->mobileno;
         return view('user.dashboard', compact('user','addednumber'));
     }
+    
+
+    
 }

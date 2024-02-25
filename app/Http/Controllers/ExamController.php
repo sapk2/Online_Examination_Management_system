@@ -154,7 +154,10 @@ public function submitAnswers($Request,$request,$examid ){
 
 // Load user's answers for each question
     $exam->load('questions.userAnswer');
-        return view('user.exams.show', compact('exam', 'subject'));
+    $user=auth()->user();
+    $userattempt =UserAnswer::where('user_id',$user->id)->where('exam_id',$exam->id)->get();
+       
+    return view('user.exams.show', compact('exam', 'subject'));
     }
    
 }
