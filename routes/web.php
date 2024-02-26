@@ -13,6 +13,7 @@ use App\Http\Controllers\SubjectController;
 use GuzzleHttp\Middleware;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,7 +120,7 @@ Route::group(['middleware' => ['auth', 'user']], function () {
 
 Route::group(['Middleware' => ['auth','teacher']],function(){
     Route::prefix('teacher')->group(function(){
-        
+        Route::get('/dashboard',[DashboardController::class,'teacherIndex'])->name('dashboard');
         // Profile
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

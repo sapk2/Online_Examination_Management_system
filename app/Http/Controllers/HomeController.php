@@ -18,7 +18,7 @@ class HomeController extends Controller
             return view('welcome', compact('user'));
         }
         else {
-            return redirect()->route('login'); // Redirect to the login page if the user is not authenticated
+            return view('welcome'); // Redirect to the login page if the user is not authenticated
         }
     }
 }

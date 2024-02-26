@@ -52,6 +52,8 @@ class DashboardController extends Controller
         return view('user.dashboard', compact('user','addednumber'));
     }
     
-
+public function teacherIndex(){
+    
+}
     
 }
