@@ -53,7 +53,9 @@ class DashboardController extends Controller
     }
     
 public function teacherIndex(){
-    
+    $user = User::all();
+       
+        return view('teacher.dashboard', compact('user'));
 }
     
 }
