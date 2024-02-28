@@ -15,4 +15,5 @@ class subject extends Model
         'credit_hrs',
         'faculties_id'
     ];
+    
 }

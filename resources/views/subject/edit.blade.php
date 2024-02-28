@@ -14,7 +14,7 @@
 <!--<div class="w-full max-w-xs grid grid-cols-1  place-content-center h-auto mx-auto py-10"></div>-->
 <form action="{{ route('subject.update', $subjects->id) }}" class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4" method="post" enctype="multipart/form-data">
     @csrf
-    @method('get')
+  
     <div class="mb-3">
         <label for="code" class="form-label">Code</label>
         <input type="text" class="form-control w-full " id="code" name="code" value="{{$subjects->code}}">
