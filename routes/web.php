@@ -121,10 +121,8 @@ Route::group(['middleware' => ['auth', 'user']], function () {
 
 Route::group(['Middleware' => ['auth','teacher']],function(){
     Route::prefix('teacher')->group(function(){
-        Route::get('/dashboard',[DashboardController::class,'teacherIndex'])->name('dashboard');
-        Route::get('/subject/subject', [TeacherController::class, 'index'])->name('subject.subjects');
        
-
+        Route::get('/dashboard', [DashboardController::class, 'teacherindex'])->name('dashboard');
 
         // Profile
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -50,12 +50,5 @@ class DashboardController extends Controller
         $user = User::all();
         $addednumber = Auth()->user()->mobileno;
         return view('user.dashboard', compact('user','addednumber'));
-    }
-    
-public function teacherIndex(){
-    $user = User::all();
-       
-        return view('teacher.dashboard', compact('user'));
-}
-    
+    }   
 }
